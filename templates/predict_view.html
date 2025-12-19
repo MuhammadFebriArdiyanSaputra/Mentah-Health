@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Hasil Prediksi - Mental Health App{%
+endblock %} {% block content %}
+<div class="nav-actions">
+  <a href="{{ url_for('predict_form') }}" class="btn btn-secondary"
+    >&larr; Kembali ke Form</a
+  >
+  <a href="{{ url_for('home') }}" class="btn btn-secondary" style="float: right"
+    >Menu Utama</a
+  >
+</div>
+
+<div class="container" style="text-align: center">
+  <h2>Hasil Analisa AI</h2>
+
+  <div class="result-box">
+    <h3>Rekomendasi Sistem:</h3>
+
+    {% if result_class == 'danger' %}
+    <h1 style="color: #e74c3c; font-size: 2.5rem; margin: 10px 0">
+      {{ result }}
+    </h1>
+    <p style="font-size: 1.1rem">
+      ⚠️ Berdasarkan jawaban Anda, sistem mendeteksi indikasi kebutuhan dukungan
+      profesional. Jangan ragu untuk berkonsultasi.
+    </p>
+    {% else %}
+    <h1 style="color: #27ae60; font-size: 2.5rem; margin: 10px 0">
+      {{ result }}
+    </h1>
+    <p style="font-size: 1.1rem">
+      ✅ Kondisi mental Anda tampak stabil. Tetap jaga pola hidup sehat!
+    </p>
+    {% endif %}
+  </div>
+
+  <div style="margin-top: 30px">
+    <a href="{{ url_for('predict_form') }}" class="btn">Coba Prediksi Lagi</a>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary"
+      >Lihat Dashboard</a
+    >
+  </div>
+
+  <details
+    style="
+      margin-top: 50px;
+      text-align: left;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    "
+  >
+    <summary style="cursor: pointer; color: #3498db; font-weight: bold">
+      Lihat Data Input Anda
+    </summary>
+    <ul
+      style="margin-top: 10px; color: #666; list-style-type: none; padding: 0"
+    >
+      {% for key, value in data.items() %}
+      <li style="padding: 5px 0; border-bottom: 1px dashed #eee">
+        <strong>{{ key }}:</strong> {{ value }}
+      </li>
+      {% endfor %}
+    </ul>
+  </details>
+</div>
+{% endblock %}

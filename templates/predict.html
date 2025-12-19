@@ -1,0 +1,253 @@
+{% extends "base.html" %} {% block title %}Form Prediksi - Mental Health App{%
+endblock %} {% block content %}
+<div class="nav-actions">
+  <a href="{{ url_for('home') }}" class="btn btn-secondary"
+    >&larr; Kembali ke Home</a
+  >
+</div>
+
+<div class="container">
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    "
+  >
+    <h2>📝 Form Deteksi Kesehatan Mental</h2>
+    <button
+      type="button"
+      onclick="randomizeForm()"
+      class="btn"
+      style="background-color: #f39c12; color: white"
+    >
+      🎲 Acak Ulang
+    </button>
+  </div>
+
+  <p style="text-align: center; margin-bottom: 30px; color: #666">
+    Data di bawah ini otomatis terisi. Silakan ubah jika perlu.
+  </p>
+
+  <form action="{{ url_for('predict_process') }}" method="POST" name="predForm">
+    <div class="form-grid">
+      <div>
+        <div class="form-group">
+          <label>Gender:</label>
+          <select name="Gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Country:</label>
+          <select name="Country" required>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+            <option value="France">France</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Pekerjaan:</label>
+          <select name="Occupation" required>
+            <option value="Corporate">Corporate</option>
+            <option value="Student">Student</option>
+            <option value="Business">Business</option>
+            <option value="Housewife">Housewife</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Apakah Bekerja Sendiri (Wiraswasta)?:</label>
+          <select name="self_employed" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Riwayat Keluarga (Gangguan Mental):</label>
+          <select name="family_history" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Waktu di Dalam Ruangan (Days Indoors):</label>
+          <select name="Days_Indoors" required>
+            <option value="1-14 days">1-14 days</option>
+            <option value="15-30 days">15-30 days</option>
+            <option value="31-60 days">31-60 days</option>
+            <option value="More than 2 months">More than 2 months</option>
+            <option value="Go out Every day">Go out Every day</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Apakah Stress Meningkat?:</label>
+          <select name="Growing_Stress" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Perubahan Kebiasaan Tidur/Makan:</label>
+          <select name="Changes_Habits" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-group">
+          <label>Riwayat Kesehatan Mental Pribadi:</label>
+          <select name="Mental_Health_History" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Perubahan Suasana Hati (Mood Swings):</label>
+          <select name="Mood_Swings" required>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Kesulitan Mengatasi Masalah:</label>
+          <select name="Coping_Struggles" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Ketertarikan dalam Bekerja:</label>
+          <select name="Work_Interest" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Kelemahan Sosial (Interaksi):</label>
+          <select name="Social_Weakness" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Bersedia Interview Kesehatan Mental?:</label>
+          <select name="mental_health_interview" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Mengetahui Opsi Perawatan?:</label>
+          <select name="care_options" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Not sure">Not sure</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 30px; text-align: center">
+      <button type="submit" class="btn btn-block">ANALISA SEKARANG</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const preset = urlParams.get("preset");
+
+    if (preset === "risk") {
+      fillRisk();
+      console.log("Mode: Preset RISK (YES)");
+    } else if (preset === "safe") {
+      fillSafe();
+      console.log("Mode: Preset SAFE (NO)");
+    } else {
+      randomizeForm();
+      console.log("Mode: Random");
+    }
+  });
+
+  // 1. Fungsi Mengisi Data Resiko Tinggi (Hasil Prediksi: YES)
+  function fillRisk() {
+    setVal("Gender", "Female");
+    setVal("Country", "United Kingdom");
+    setVal("Occupation", "Housewife");
+    setVal("self_employed", "No");
+    setVal("family_history", "Yes");
+    setVal("Growing_Stress", "No");
+    setVal("Days_Indoors", "31-60 days");
+    setVal("Changes_Habits", "Yes");
+    setVal("Mental_Health_History", "Maybe");
+    setVal("Mood_Swings", "Medium");
+    setVal("Coping_Struggles", "Yes");
+    setVal("Work_Interest", "No");
+    setVal("Social_Weakness", "Yes");
+    setVal("care_options", "Yes");
+    setVal("mental_health_interview", "No");
+  }
+
+  // 2. Fungsi Mengisi Data Aman (Hasil Prediksi: NO)
+  function fillSafe() {
+    setVal("Gender", "Male");
+    setVal("Country", "India");
+    setVal("Occupation", "Housewife");
+    setVal("self_employed", "No");
+    setVal("family_history", "Yes");
+    setVal("Growing_Stress", "Yes");
+    setVal("Days_Indoors", "15-30 days");
+    setVal("Changes_Habits", "Maybe");
+    setVal("Mental_Health_History", "Maybe");
+    setVal("Mood_Swings", "Medium");
+    setVal("Coping_Struggles", "No");
+    setVal("Work_Interest", "Yes");
+    setVal("Social_Weakness", "No");
+    setVal("care_options", "Yes");
+    setVal("mental_health_interview", "No");
+  }
+
+  function randomizeForm() {
+    const selects = document.querySelectorAll("select");
+    selects.forEach((select) => {
+      const options = select.options;
+      const randomIndex = Math.floor(Math.random() * options.length);
+      select.selectedIndex = randomIndex;
+    });
+  }
+
+  function setVal(name, value) {
+    const el = document.querySelector(`[name="${name}"]`);
+    if (el) el.value = value;
+  }
+</script>
+
+{% endblock %}

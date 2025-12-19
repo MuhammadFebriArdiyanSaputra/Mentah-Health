@@ -1,0 +1,8 @@
+https://colab.research.google.com/drive/1JCgcOjfLW7ZwjG70tNr8jRKZQ-42s51V?usp=sharing
+
+https://www.kaggle.com/datasets/bhavikjikadara/mental-health-dataset?resource=download
+
+https://lookerstudio.google.com/u/0/reporting/1333340e-df26-4e8f-bb0f-16b5ebad4d08/page/C11iF/edit
+
+with hyperparameter tuning:
+https://colab.research.google.com/drive/1j4hXDbGT4-97F6ziojEJCgHj42c0C9Mv#scrollTo=L8CQTNW0EIfJ

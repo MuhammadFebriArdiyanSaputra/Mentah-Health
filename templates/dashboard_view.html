@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Laporan Analitik Produk{% endblock %}
+{% block content %}
+<div class="nav-actions">
+  <a href="{{ url_for('home') }}" class="btn btn-secondary"
+    >&larr; Kembali ke Home</a
+  >
+</div>
+
+<div class="container">
+  <h1 class="dashboard-title" style="text-align: center; margin-bottom: 20px">
+    Laporan Analitik Produk
+  </h1>
+
+  <div
+    class="iframe-wrapper"
+    style="
+      position: relative;
+      width: 100%;
+      padding-bottom: 75%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    "
+  >
+    <iframe
+      src="https://lookerstudio.google.com/embed/reporting/1333340e-df26-4e8f-bb0f-16b5ebad4d08/page/C11iF"
+      frameborder="0"
+      style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      "
+      allowfullscreen
+      sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+    ></iframe>
+  </div>
+</div>
+{% endblock %}
