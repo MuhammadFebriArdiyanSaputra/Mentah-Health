@@ -7,7 +7,7 @@
 
 ## Overview
 
-Proyek ini adalah sistem **Deteksi Dini Kesehatan Mental** berbasis Web. Aplikasi ini menggabungkan kekuatan **Machine Learning (XGBoost)** untuk memprediksi kebutuhan perawatan mental seseorang dan **Business Intelligence (Google Looker Studio)** untuk memvisualisasikan tren kesehatan mental global.
+Proyek ini adalah sistem **Deteksi Kesehatan Mental** berbasis Web. Aplikasi ini menggabungkan kekuatan **Machine Learning (XGBoost)** untuk memprediksi kebutuhan perawatan mental seseorang dan **Business Intelligence (Google Looker Studio)** untuk memvisualisasikan tren kesehatan mental global.
 
 Tujuan utama proyek ini adalah membantu individu melakukan _self-screening_ awal berdasarkan faktor demografis, riwayat keluarga, dan kebiasaan sehari-hari.
 
@@ -26,11 +26,9 @@ Proyek ini menggunakan algoritma **XGBoost Classifier** yang telah dioptimasi.
 
 - **Preprocessing:**
   - **Cleaning:** Imputasi nilai _null_ pada kolom `self_employed` menggunakan modus.
-  - **Ordinal Encoding:** Pemetaan manual untuk fitur bertingkat (misal: _Days Indoors_, _Mood Swings_) agar urutan logikanya terjaga (0 < 1 < 2).
-  - **Label Encoding:** Untuk fitur nominal seperti _Gender_ dan _Country_.
+  - **LabelEncoding:** Pemetaan otomatis untuk fitur bertingkat (misal: _Days Indoors_, _Mood Swings_) dan nominal (seperti _Gender_ dan _Country_) agar urutan logikanya terjaga (0 < 1 < 2).
 - **Performa Model:**
-  - **Akurasi:** ~80% pada data uji.
-  - **Metric:** Menggunakan Logloss metric untuk evaluasi.
+  - **Akurasi:** ~77% pada data uji.
 
 ## Features
 
